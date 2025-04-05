@@ -23,7 +23,7 @@ export const countVowels: (str: string) => number = (str: string): number => (
 export const isPalindrome: (str: string) => boolean = (str: string): boolean => (
     R.pipe(
         (str: string) => stringToArray(str.toLowerCase()),
-        (strAsArray: string[]) => strAsArray.filter(isLetter).join(""),
+        (strAsArray: string[]) => strAsArray.filter(isLetter).join(),
         (str: string) => str === safeReverse(str),
 )(str)
 );
