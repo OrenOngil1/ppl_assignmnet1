@@ -1,0 +1,22 @@
+#lang racket/base
+
+(define last-item
+    (lambda (lst)
+    if(equal? (cdr lst) '())
+        (car lst)
+        (last-item (cdr lst))
+    )
+)
+
+(define remove-last-item
+    (lambda (lst)
+    if(equal? (cdr lst) '())
+        '()
+        (remove-last-item (cdr lst))
+    )
+)
+
+(define rotate-nth
+    (lambda (lst n)
+    @todo
+))
