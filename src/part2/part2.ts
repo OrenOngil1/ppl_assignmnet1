@@ -16,4 +16,7 @@ export type WordTree = {
     children: WordTree[];
 }
 
-export const treeToSentence: undefined = undefined;
+export const treeToSentence: (tree : WordTree) => string = (tree: WordTree): string => (
+    tree.children.length === 0 ? tree.root :
+    tree.children.reduce((acc: string, child: WordTree) => acc + " " + treeToSentence(child), tree.root)
+);
