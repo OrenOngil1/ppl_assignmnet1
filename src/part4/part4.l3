@@ -8,10 +8,11 @@
 ; Tests: last-item('(1, 2, 3)) -> 3, last-item ('(1)) -> 1
 (define last-item
     (lambda (lst)
-    if(eq? (cdr lst) '())
+        (if(eq? (cdr lst) '())
         (car lst)
         (last-item (cdr lst))
     )
+)
 )
 
 ; Signature: remove-last-item(lst)
@@ -21,9 +22,10 @@
 ; Tests: remove-last-item('(1, 2, 3)) -> '(1, 2), remove-last-item('(1)) -> '()
 (define remove-last-item
     (lambda (lst)
-    if(eq? (cdr lst) '())
+        (if(eq? (cdr lst) '())
         '()
         (cons (car lst) remove-last-item(cdr lst))
+        )
     )
 )
 
@@ -34,11 +36,12 @@
 ; Tests: rotate-nth('(1, 2, 3)) -> '(3, 1, 2),rotate-nth('(1, 2, 3), 2) -> '(2, 3, 1), rotate-nth('(1, 2, 3), 3) -> '(1, 2, 3) rotate-nth('(), 1) -> '()
 (define rotate-nth
     (lambda (lst n)
-    if(eq? lst '())
+        (if(eq? lst '())
         '()
         (if(= n 0)
             lst
             rotate-nth((cons (last-item lst) ((remove-last-item (lst)) (- n 1))))
+            )
         )
     )
 )

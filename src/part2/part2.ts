@@ -15,7 +15,7 @@ const safeReverse: (str: string) => string = (str: string): string => (
 export const countVowels: (str: string) => number = (str: string): number => (
     R.pipe(
         (str: string) => stringToArray(str.toLowerCase()),
-        (strAsArray: string[]) => strAsArray.reduce((acc: number, c: string) => R.includes(c, vowels)? acc + 1: acc, 0)
+        (strAsArray: string[]) => strAsArray.reduce((acc: number, c: string) => R.includes(c, vowels) ? acc + 1 : acc, 0)
     )(str)
 );
 
