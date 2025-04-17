@@ -4,13 +4,6 @@ const stringToArray = R.split("");
 
 /* Question 1 */
 const vowels: string[] = ['a', 'e', 'i', 'o', 'u'];
-const isLetter: (c: string) => boolean = (c: string): boolean => c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z';
-const safeReverse: (str: string) => string = (str: string): string => (
-    R.pipe(
-        stringToArray,
-        R.reduce((acc: string, c: string) => c + acc, ""),
-    )(str)
-);
 
 export const countVowels: (str: string) => number = (str: string): number => (
     R.pipe(
@@ -23,9 +16,17 @@ export const countVowels: (str: string) => number = (str: string): number => (
 export const isPalindrome: (str: string) => boolean = (str: string): boolean => (
     R.pipe(
         (str: string) => stringToArray(str.toLowerCase()),
-        (strAsArray: string[]) => strAsArray.filter(isLetter).join(),
+        (strAsArray: string[]) => R.join('', strAsArray.filter(isLetterOrNumber)),
         (str: string) => str === safeReverse(str),
 )(str)
+);
+
+const isLetterOrNumber: (c: string) => boolean = (c: string): boolean => c >= '0' && c <= '9' || c >= 'a' && c <= 'z';
+const safeReverse: (str: string) => string = (str: string): string => (
+    R.pipe(
+        stringToArray,
+        R.reduce((acc: string, c: string) => c + acc, ""),
+    )(str)
 );
   
 /* Question 3 */
