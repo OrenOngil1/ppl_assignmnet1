@@ -13,13 +13,12 @@ export const countVowels: (str: string) => number = (str: string): number => (
 );
 
 /* Question 2 */
-export const isPalindrome: (str: string) => boolean = (str: string): boolean => (
+export const isPalindrome: (str: string) => boolean = (str: string): boolean =>
     R.pipe(
         (str: string) => stringToArray(str.toLowerCase()),
         (strAsArray: string[]) => R.join('', strAsArray.filter(isLetterOrNumber)),
         (str: string) => str === safeReverse(str),
-)(str)
-);
+)(str);
 
 const isLetterOrNumber: (c: string) => boolean = (c: string): boolean => c >= '0' && c <= '9' || c >= 'a' && c <= 'z';
 const safeReverse: (str: string) => string = (str: string): string => (
@@ -37,8 +36,5 @@ export type WordTree = {
 
 export const treeToSentence: (tree : WordTree) => string = (tree: WordTree): string => (
     tree.children.length === 0 ? tree.root :
-    R.pipe(
-        (tree: WordTree) => tree.children.map(treeToSentence),
-        (children: string[]) => children.reduce((acc: string, child: string) => acc + " " + child, tree.root),
-    )(tree)
+    tree.children.reduce((acc: string, child: WordTree) => acc + " " + treeToSentence(child), tree.root)
 );

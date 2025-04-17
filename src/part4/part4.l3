@@ -4,7 +4,6 @@
 ; Type:[List(T) -> T]
 ; Purpose: Retrieving the last item of lst
 ; Pre-conditions: lst.length > 0
-; Post-conditions: true
 ; Tests: last-item('(1, 2, 3)) -> 3, last-item ('(1)) -> 1
 (define last-item
     (lambda (lst)
@@ -32,7 +31,7 @@
 ; Signature: rotate-nth(lst, n)
 ; Type: [List(T) * number -> List(T)]
 ; Purpose: Rotates the list n times to the right
-; Pre-conditions: n > -1 //NOTE: may not be true
+; Pre-conditions: n is a non-negative number
 ; Tests: rotate-nth('(1, 2, 3)) -> '(3, 1, 2),rotate-nth('(1, 2, 3), 2) -> '(2, 3, 1), rotate-nth('(1, 2, 3), 3) -> '(1, 2, 3) rotate-nth('(), 1) -> '()
 (define rotate-nth
     (lambda (lst n)
