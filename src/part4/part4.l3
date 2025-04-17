@@ -23,10 +23,8 @@
     (lambda (lst)
         (if(eq? (cdr lst) '())
             '()
-            (cons (car lst) remove-last-item(cdr lst))
-        )
-    )
-)
+            (cons (car lst) (remove-last-item(cdr lst))))))
+
 
 ; Signature: rotate-nth(lst, n)
 ; Type: [List(T) * number -> List(T)]
@@ -39,8 +37,7 @@
             '()
             (if(= n 0)
                 lst
-                rotate-nth((cons (last-item lst) ((remove-last-item (lst)) (- n 1))))
+                (rotate-nth (cons (last-item lst) (remove-last-item lst)) (- n 1)))
             )
-        )
-    )
+      )
 )
